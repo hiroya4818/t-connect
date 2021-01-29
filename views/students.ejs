@@ -10,16 +10,9 @@
     <%- include('header'); %>
     <div class="container">
       <div class="introduce">
-        <h1>授業申請一覧</h1>
-        <% contents.forEach((content)=>{%>
-          <p>
-            <%= content.lec%>
-            <div class="content-menu">
-                <form action="/contents/<%=content.id%>" method="post">
-                  <input type="submit" value="引き受ける">
-                </form>
-            </div>
-          </p>
+        <h1>在籍生徒</h1>
+        <% students.forEach((student)=>{%>
+          <p><%= student.grade%>:<%= student.name%></p>
         <% });%>
       </div>
     </div>
