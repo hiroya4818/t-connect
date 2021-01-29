@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>T-Connect</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <%- include('header'); %>
+    <div class="container">
+      
+      <ul class="errors">
+        <% if(locals.error !== undefined) { %>
+          <li><%= locals.error %></li>
+        <% } %>
+      </ul>
+      <div class="introduce">
+        <h1>今後の授業</h1>
+        <% if(items.lec1 !== null){ %>
+          <p><%= items.lec1%>  
+            <%if(items.status1 === "承認"){%>
+              <span class="green"><%= items.status1%></span>
+            <% }else{%>
+              <span class="red"><%= items.status1%><span>
+            <% }%>
+          <a href="/delete/1" class="delete">取り消し</a></p>
+        <% }%> 
+        <% if(items.lec2 !== null){ %>
+          <p><%= items.lec2%>  
+            <%if(items.status2 === "承認"){%>
+              <span class="green"><%= items.status2%></span>
+            <% }else{%>
+              <span class="red"><%= items.status2%><span>
+            <% }%>
+          <a href="/delete/2" class="delete">取り消し</a></p>
+        <% }%> 
+        <% if(items.lec3 !== null){ %>
+          <p><%= items.lec3%> 
+            <%if(items.status3 === "承認"){%>
+              <span class="green"><%= items.status3%></span>
+            <% }else{%>
+              <span class="red"><%= items.status3%><span>
+            <% }%>
+          <a href="/delete/3" class="delete">取り消し</a></p>
+        <% }%> 
+      </div>
+    </div>
+  </body>
+</html>

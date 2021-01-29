@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>T-Connect</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <div class="sign">
+      <div class="container">
+        <div class="panel">
+          <% if (errors.length > 0) { %>
+            <ul class="errors">
+              <% errors.forEach(error => { %>
+                <li><%= error %></li>
+              <% }); %>
+            </ul>
+          <% } %>
+          <%if(locals.how === "log"){%>
+            <h2>ログイン</h2>
+          <% }%>
+          <%if(locals.how === "new"){%>
+            <h2>新規登録</h2>
+          <% }%>
+          <form action="/login" method="post">
+            <%if(locals.how === "new"){%>
+              <p>名前</p>
+              <input type="text" name="yourname">
+            <% }%>
+            <p>メールアドレス</p>
+            <input type="text" name="email">
+            <%if(locals.class === "student"){%>
+              <%if(locals.how === "new"){%>
+                <p>学年:<select name="grade">
+                  <option value="中学1年">中学1年</option>
+                  <option value="中学2年">中学2年</option>
+                  <option value="中学3年">中学3年</option>
+                  <option value="高校1年">高校1年</option>
+                  <option value="高校2年">高校2年</option>
+                  <option value="高校3年">高校3年</option>
+                  <option value="その他">その他</option>
+                </select></p>
+              <% }%>
+            <% }%>
+            <%if(locals.class === "teacher"){%>
+              <p>指定されているパスワード('teacher'です)</p>
+              <input type="password" name="password">
+            <% }%>
+            <%if(locals.how === "new"){%>
+              <br><input type="submit" value="新規登録" class="login">
+            <% }else{%>
+              <br><input type="submit" value="ログイン" class="login">
+            <% }%>
+              <br><a class="btn" href="/">所属選択にもどる</a>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

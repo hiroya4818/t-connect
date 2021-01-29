@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>T-Connect</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <%- include('header'); %>
+    <div class="container">
+      <div class="introduce">
+        <h1>授業申請一覧</h1>
+        <% contents.forEach((content)=>{%>
+          <p>
+            <%= content.lec%>
+            <div class="content-menu">
+                <form action="/contents/<%=content.id%>" method="post">
+                  <input type="submit" value="引き受ける">
+                </form>
+            </div>
+          </p>
+        <% });%>
+      </div>
+    </div>
+  </body>
+</html>
